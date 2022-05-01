@@ -1,0 +1,25 @@
+﻿<Page x:Class="kursovaya.Pages.ConnectToBD"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:kursovaya.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ConnectToBD">
+
+    <StackPanel>
+        <Label Content="Сервер бд"/>
+        <TextBox Text="{Binding Server}"/>
+        <Label Content="Название бд"/>
+        <TextBox Text="{Binding BD}"/>
+        <Label Content="Пользователь"/>
+        <TextBox Text="{Binding User}"/>
+        <Label Content="Пароль"/>
+        <PasswordBox x:Name="passwordBox"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Content="Тест связи" Command="{Binding TestConnectionToBD}"/>
+            <Button Content="Сохранить" Command="{Binding SaveConnect}"/>
+        </StackPanel>
+    </StackPanel>
+</Page>

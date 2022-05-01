@@ -1,0 +1,33 @@
+﻿<Page x:Class="kursovaya.Pages.Enrollelist"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:kursovaya.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Enrollelist">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Label Content="Специальность:"/>
+            <ComboBox ItemsSource="{Binding Disciplines}" SelectedItem="{Binding SelectedDiscipline}" DisplayMemberPath="Title" Width="200"/>
+        </StackPanel>
+        <ListView Grid.Row="1" ItemsSource="{Binding EnrollesBySelectedDiscipline}" SelectedItem="{Binding SelectedEnrolle}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Фамилия" DisplayMemberBinding="{Binding LastName}"/>
+                    <GridViewColumn Header="Имя" DisplayMemberBinding="{Binding surname}"/>
+                    <GridViewColumn Header="Отчество" DisplayMemberBinding="{Binding patronymic}"/>
+                    <GridViewColumn Header="Аттестат" DisplayMemberBinding="{Binding DisciplineId}"/>
+                    <GridViewColumn Header="Льготы" DisplayMemberBinding="{Binding Availabilityofbenefits}"/>
+                    <GridViewColumn Header="Общежитие" DisplayMemberBinding="{Binding Needsahostel}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Page>

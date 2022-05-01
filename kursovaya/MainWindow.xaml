@@ -1,0 +1,38 @@
+﻿<Window x:Class="kursovaya.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:kursovaya"
+        mc:Ignorable="d"
+        Title="MainWindow" 
+        WindowState="Maximized" Height="600" Width="800">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Menu>
+            <MenuItem Header="Справочники">
+                <MenuItem Header="Абитуриенты">
+                    <MenuItem Header="Добавить абитуриента" Command="{Binding EditStandartEnrolle}"/>
+                    <MenuItem Header="Список абитуриентов" Command="{Binding ViewEnrollee}"/>
+                    <MenuItem Header="Добавить абитуриента(сирота)" Command="{Binding EditOrphanEnrolle}"/>
+                </MenuItem>
+                <MenuItem Header="Дисциплины">
+                    <MenuItem Header="Добавить Дисциплину" Command="{Binding AddDiscipline}"/>
+                    <MenuItem Header="Список абитуриентов" Command="{Binding ViewDiscipline}"/>
+                </MenuItem>
+                <MenuItem Header="Отделения">
+                    <MenuItem Header="Добавить Отделение" Command="{Binding AddDepartment}"/>
+                    <MenuItem Header="Список Отделений" Command="{Binding ViewDepartment}"/>
+                </MenuItem>
+            </MenuItem>
+            <Button Height="22" Width="24" HorizontalAlignment="Left" Command="{Binding ConnectToBDCom}">
+                <Image Height="20" Source="/pngSettings.png" Stretch="Fill" Width="20"/>
+            </Button>
+        </Menu>
+        <Frame Content="{Binding CurrentPage}" Grid.Row="1" NavigationUIVisibility="Hidden"/>
+    </Grid>
+</Window>
