@@ -37,7 +37,7 @@ namespace kursovaya.Model
         {
             int result = 0;
             var mySqlDB = MySqlDB.GetDB();
-            string query = $"SELECT count(*) FROM Enrollelist WHERE Discipline_id = " + Discipline.IDDisciplines;
+            string query = $"SELECT count(*) FROM Enrollelist WHERE IDDiscipline = " + Discipline.IDDisciplines;
             if (mySqlDB.OpenConnection())
             {
                 using (MySqlCommand mc = new MySqlCommand(query, mySqlDB.sqlConnection))
@@ -58,7 +58,7 @@ namespace kursovaya.Model
             int id = selectedDiscipline?.IDDisciplines ?? 0;
             var Enrolles = new List<Enrolle>();
             var mySqlDB = MySqlDB.GetDB();
-            string query = $"SELECT * FROM `student` WHERE group_id = {id}";
+            string query = $"SELECT * FROM `Enrollelist` WHERE IDDiscipline = {id}";
             if (mySqlDB.OpenConnection())
             {
                 using (MySqlCommand mc = new MySqlCommand(query, mySqlDB.sqlConnection))
@@ -68,7 +68,7 @@ namespace kursovaya.Model
                     {
                         Enrolles.Add(new Enrolle
                         {
-                            ID = dr.GetInt32("id"),
+                            idEnrollelist = dr.GetInt32("id"),
                             FirstName = dr.GetString("firstName"),
                             Surname = dr.GetString("lastName"),
                             Patronymic = dr.GetString("patronymicName"),
@@ -120,7 +120,7 @@ namespace kursovaya.Model
             db.ExecuteNonQuery(query.Item1, query.Item2);
             return id;
         }
-        //// обновляет объект в бд по его id
+        // обновляет объект в бд по его id
         public void Update<T>(T value) where T : BaseDTO
         {
             string table;

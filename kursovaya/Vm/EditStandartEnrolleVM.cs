@@ -25,6 +25,8 @@ namespace kursovaya.Vm
     public class EditStandartEnrolleVM : BaseVm
     {
         public Enrolle EditEnrolle { get; }
+
+        public Passport EditPassport { get; }
         public Command SaveEnrolle { get; set; }
         public Discipline EnrolleDiscipline
         {
@@ -62,10 +64,10 @@ namespace kursovaya.Vm
             SaveEnrolle = new Command(() => {
                 EditEnrolle.DisciplineId = EnrolleDiscipline.IDDisciplines;
                 var model = Sql.GetInstance();
-                if (EditEnrolle.ID == 0)
+                if (EditEnrolle.idEnrollelist == 0)
                     model.Insert(EditEnrolle);
                 else
-                    //model.Update(EditEnrolle);
+                    model.Update(EditEnrolle);
                 currentPageControl.SetPage(new Enrollelist(EnrolleDiscipline));
             });
         }
