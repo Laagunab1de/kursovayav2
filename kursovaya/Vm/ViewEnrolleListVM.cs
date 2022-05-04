@@ -52,7 +52,7 @@ namespace kursovaya.Vm
         public ViewEnrollelistVM(Discipline selectedDiscipline)
         {
             Sql sqlModel = Sql.GetInstance();
-            Disciplines = sqlModel.SelectDisciplinesRange(0, 100);
+            Disciplines = sqlModel.SelectDisciplinesRange();
 
         }
     }

@@ -48,7 +48,7 @@ namespace kursovaya.Vm
                 if (EditDiscipline.IDDisciplines == 0)
                     model.Insert(EditDiscipline);
                 else
-                   // model.Update(EditDiscipline);
+                    model.Update(EditDiscipline);
                 currentPageControl.Back();
             });
         }

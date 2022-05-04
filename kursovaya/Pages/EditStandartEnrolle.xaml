@@ -7,11 +7,11 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="EditStandartEnrolle">
-    
-    <StackPanel >
 
+    <StackPanel >
         <Grid>
             <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -21,11 +21,15 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <StackPanel Orientation="Vertical" DataContext="{Binding EditEnrolle}" Grid.Column="1" HorizontalAlignment="Center" Width="150">
+            <StackPanel Orientation="Vertical" DataContext="{Binding EditCertificate}" Grid.Column="3" HorizontalAlignment="Center" Width="150">
                 <Label Content="Балл аттестата" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
                 <TextBox Text="{Binding GPA}" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
                 <Label Content="Оригинал?" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
-                <TextBox Text="{Binding originality}" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
+                <TextBox Text="{Binding Originality}" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
+                <Label Content="Фото" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical" DataContext="{Binding EditDocStandart}" Grid.Column="1" HorizontalAlignment="Center" Width="150">
                 <Label Content="Фото" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
                 <TextBox Text="{Binding Photo}" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
                 <Label Content="Флюрография" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
@@ -34,21 +38,11 @@
                 <TextBox Text="{Binding CopyOfSnils}" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
                 <Label Content="Полис" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
                 <TextBox Text="{Binding MedicalPolicy}" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
-                <Label Content="Серия" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
-                <TextBox Text="{Binding series}" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
-                <Label Content="Номер" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
-                <TextBox Text="{Binding number}" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
-                <Label Content="Дата Выдачи" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
-                <DatePicker SelectedDate="{Binding DateofIssued}" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
-                <Label Content="Кем выдан" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
-                <TextBox Text="{Binding Issued_by}" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
-                <Label Content="Место регистрации" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
-                <TextBox Text="{Binding placeofregistration}" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
             </StackPanel>
 
-            <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Orientation="Vertical" DataContext="{Binding EditStandartEnrolle}" Width="264" Height="432">
+            <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Orientation="Vertical" DataContext="{Binding EditPassport}" Width="187" Height="432">
                 <Label Content="Фамилия" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
-                <TextBox Text="{Binding surname}" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
+                <TextBox Text="{Binding Surname}" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
                 <Label Content="Имя" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
                 <TextBox Text="{Binding FirstName}" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
                 <Label Content="Отчество" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
@@ -59,11 +53,11 @@
                 <DatePicker SelectedDate="{Binding DateOfAdmission}" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
             </StackPanel>
 
-            <StackPanel Orientation="Vertical" DataContext="{Binding EditStandartEnrolle}" Grid.Column="2" HorizontalAlignment="Left" Margin="66,0,0,0" Width="150" >
+            <StackPanel Orientation="Vertical" DataContext="{Binding EditPassport}" Grid.Column="2" HorizontalAlignment="Center" Margin="0,-2,0,2" Width="150" >
                 <Label Content="Серия" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
-                <TextBox Text="{Binding series}" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
+                <TextBox Text="{Binding Series}" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
                 <Label Content="Номер" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
-                <TextBox Text="{Binding number}" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
+                <TextBox Text="{Binding Number}" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
                 <Label Content="Дата Выдачи" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
                 <DatePicker SelectedDate="{Binding DateofIssued}" MaxWidth="250" MinWidth="150" HorizontalAlignment="Center"/>
                 <Label Content="Кем выдан" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
@@ -72,7 +66,7 @@
                 <TextBox Text="{Binding placeofregistration}" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
             </StackPanel>
 
-            <StackPanel Orientation="Vertical" DataContext="{Binding EditStandartEnrolle}" HorizontalAlignment="Left"  Width="144" Margin="0,236,0,181" >
+            <StackPanel Orientation="Vertical" DataContext="{Binding Disciplines}" HorizontalAlignment="Left"  Width="144" Margin="0,236,0,181" >
                 <Label Content="Дисциплина"/>
                 <ComboBox ItemsSource="{Binding Discipline}"
                   SelectedItem="{Binding EnrolleDiscipline}"

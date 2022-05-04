@@ -12,6 +12,13 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using kursovaya.DTO;
+using kursovaya.Vm;
+using kursovaya;
+using kursovaya.Model;
+using kursovaya.Pages;
+using kursovaya.Tools;
+using MySql.Data.MySqlClient;
 
 namespace kursovaya.Pages
 {
@@ -20,7 +27,7 @@ namespace kursovaya.Pages
     /// </summary>
     public partial class EditDiscipline : Page
     {
-        public EditDiscipline(EditDiscipline vm)
+        public EditDiscipline(EditDisciplineVM vm)
         {
             InitializeComponent();
             DataContext = vm;

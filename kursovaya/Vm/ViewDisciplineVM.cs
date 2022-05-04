@@ -24,6 +24,7 @@ namespace kursovaya.Vm
 {
     class ViewDisciplineVM : BaseVm
     {
+        public Discipline Discipline { get; set; }
         public List<Discipline> disciplines;
         private int viewRowsCount;
         public List<Discipline> Disciplines
@@ -31,7 +32,7 @@ namespace kursovaya.Vm
             get => Disciplines;
             set
             {
-                Disciplines = value;
+                Disciplines = value;    
                 Signal();
             }
         }
@@ -58,8 +59,7 @@ namespace kursovaya.Vm
         {
             var sqlModel = Sql.GetInstance();
             int pageCount = (sqlModel.GetNumRows(typeof(Discipline)) / ViewRowsCount) + 1;
-            //PageIndexes = new List<int>(Enumerable.Range(1, pageCount));
-            //SelectedIndex = 1;
+            
         }
     }
 }

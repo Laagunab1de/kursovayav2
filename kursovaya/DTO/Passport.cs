@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 namespace kursovaya.DTO
 {
     [Table("PassportDetails")]
-    public class Passport
+    public class Passport : BaseDTO
     {
         [Column("idPassportDetails")]
         public int idPassportDetails { get; set; }
         [Column("Birthday")]
         public DateTime Birthday { get; set; }
         [Column("Series")]
-        public int series { get; set; }
+        public int Series { get; set; }
         [Column("Number")]
         public int number { get; set; }
         [Column("IssuedBy")]

@@ -37,7 +37,7 @@ namespace kursovaya.Model
         {
             int result = 0;
             var mySqlDB = MySqlDB.GetDB();
-            string query = $"SELECT count(*) FROM Enrollelist WHERE IDDiscipline = " + Discipline.IDDisciplines;
+            string query = $"SELECT count(*) FROM enrollelist WHERE IDDiscipline = " + Discipline.IDDisciplines;
             if (mySqlDB.OpenConnection())
             {
                 using (MySqlCommand mc = new MySqlCommand(query, mySqlDB.sqlConnection))
@@ -86,7 +86,7 @@ namespace kursovaya.Model
         {
             var mySqlDB = MySqlDB.GetDB();
             var result = new List<Discipline>();
-            string sql = "select id, title, prepod_id from discipline";
+            string sql = "select id, title from discipline";
             if (mySqlDB.OpenConnection())
             {
                 using (MySqlCommand mc = new MySqlCommand(sql, mySqlDB.sqlConnection))
@@ -152,11 +152,11 @@ namespace kursovaya.Model
             return ((TableAttribute)tableAtrributes.First()).Table;
         }
 
-        public List<Discipline> SelectDisciplinesRange(int skip, int count)
+        public List<Discipline> SelectDisciplinesRange()
         {
             var Disciplines = new List<Discipline>();
             var mySqlDB = MySqlDB.GetDB();
-            string query = $"SELECT * FROM `Discipline` LIMIT {skip},{count}";
+            string query = $"SELECT * FROM `Discipline`";
             if (mySqlDB.OpenConnection())
             {
                 using (MySqlCommand mc = new MySqlCommand(query, mySqlDB.sqlConnection))

@@ -25,6 +25,9 @@ namespace kursovaya.Vm
     public class EditOrphanEnrolleVM : BaseVm
     {
         public Enrolle EditEnrolle { get; }
+        public Passport EditPassport { get; }
+        public Certificate EditCertificate { get; }
+        public OtherOrphan EditOtherOrphan { get; }
         public Command SaveEnrolle { get; set; }
         public Discipline EnrolleDiscipline
         {
@@ -45,12 +48,17 @@ namespace kursovaya.Vm
         {
             this.currentPageControl = currentPageControl;
             EditEnrolle = new Enrolle();
+            EditCertificate = new Certificate();
+            EditPassport = new Passport();
             Init();
         }
 
-        public EditOrphanEnrolleVM(Enrolle editEnrolle, CurrentPageControl currentPageControl)
+        public EditOrphanEnrolleVM(Enrolle editEnrolle, Passport editPassport, Certificate editCertificate, OtherOrphan editOtherOrphan, CurrentPageControl currentPageControl)
         {
             EditEnrolle = editEnrolle;
+            EditCertificate = editCertificate;
+            EditPassport = editPassport;
+            EditOtherOrphan = editOtherOrphan;
             this.currentPageControl = currentPageControl;
             Init();
             EnrolleDiscipline = Disciplines.FirstOrDefault(s => s.IDDisciplines == editEnrolle.DisciplineId);
@@ -58,14 +66,24 @@ namespace kursovaya.Vm
 
         private void Init()
         {
-            Disciplines = Sql.GetInstance().SelectDisciplinesRange(0, 100);
+            Disciplines = Sql.GetInstance().SelectDisciplinesRange();
             SaveEnrolle = new Command(() => {
                 EditEnrolle.DisciplineId = EnrolleDiscipline.IDDisciplines;
                 var model = Sql.GetInstance();
                 if (EditEnrolle.ID == 0)
+                {
                     model.Insert(EditEnrolle);
+                    model.Insert(EditCertificate);
+                    model.Insert(EditPassport);
+                    model.Insert(EditOtherOrphan);
+                }
                 else
-                    //model.Update(EditEnrolle);
+                {
+                    model.Update(EditEnrolle);
+                    model.Update(EditCertificate);
+                    model.Update(EditPassport);
+                    model.Insert(EditOtherOrphan);
+                }
                 currentPageControl.SetPage(new Enrollelist(EnrolleDiscipline));
             });
         }

@@ -8,7 +8,7 @@ using kursovaya.Tools;
 namespace kursovaya.DTO
 {
     [Table("discipline")]
-    public partial class Discipline
+    public partial class Discipline : BaseDTO
     {
         [Column("IDDiscipline")]
         public int IDDisciplines { get; set; }

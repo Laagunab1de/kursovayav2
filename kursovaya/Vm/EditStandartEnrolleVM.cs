@@ -25,8 +25,10 @@ namespace kursovaya.Vm
     public class EditStandartEnrolleVM : BaseVm
     {
         public Enrolle EditEnrolle { get; }
-
+        public Certificate EditCertificate { get; }
         public Passport EditPassport { get; }
+        public DocStandart EditDocStandart { get; }
+
         public Command SaveEnrolle { get; set; }
         public Discipline EnrolleDiscipline
         {
@@ -60,14 +62,24 @@ namespace kursovaya.Vm
 
         private void Init()
         {
-            Disciplines = Sql.GetInstance().SelectDisciplinesRange(0, 100);
+            Disciplines = Sql.GetInstance().SelectDisciplinesRange();
             SaveEnrolle = new Command(() => {
                 EditEnrolle.DisciplineId = EnrolleDiscipline.IDDisciplines;
                 var model = Sql.GetInstance();
                 if (EditEnrolle.idEnrollelist == 0)
+                {
                     model.Insert(EditEnrolle);
+                    model.Update(EditCertificate);
+                    model.Update(EditPassport);
+                    model.Insert(EditDocStandart);
+                }
                 else
+                {
                     model.Update(EditEnrolle);
+                    model.Update(EditCertificate);
+                    model.Update(EditPassport);
+                    model.Insert(EditDocStandart);
+                }
                 currentPageControl.SetPage(new Enrollelist(EnrolleDiscipline));
             });
         }
