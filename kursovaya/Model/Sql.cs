@@ -107,6 +107,29 @@ namespace kursovaya.Model
             return result;
         }
 
+        internal List<Department> SelectDepartments()
+        {
+            var mySqlDB = MySqlDB.GetDB();
+            var result = new List<Department>();
+            string sql = "select idDepartment, Title from department";
+            if (mySqlDB.OpenConnection())
+            {
+                using (MySqlCommand mc = new MySqlCommand(sql, mySqlDB.sqlConnection))
+                using (MySqlDataReader dr = mc.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        result.Add(new Department
+                        {
+                            IDDepatment = dr.GetInt32("idDepartment"),
+                            Title = dr.GetString("Title"),                            
+                        });
+                    }
+                }
+                mySqlDB.CloseConnection();
+            }
+            return result;
+        }
         //INSERT INTO `group` set title = '1125', year = 2018;
         //возвращает ID добавленной записи
         public int Insert<T>(T value)

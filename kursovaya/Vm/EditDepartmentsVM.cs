@@ -24,17 +24,17 @@ namespace kursovaya.Vm
 {
     public class EditDepartmentsVM
     {
-        public Departments EditDemartment { get; set; }
+        public Department EditDemartment { get; set; }
         public Command SaveDemartment { get; set; }
 
         private CurrentPageControl currentPageControl;
         public EditDepartmentsVM(CurrentPageControl currentPageControl)
         {
             this.currentPageControl = currentPageControl;
-            EditDemartment = new Departments();
+            EditDemartment = new Department();
             InitCommand();
         }
-        public EditDepartmentsVM(Departments editDepartments, CurrentPageControl currentPageControl)
+        public EditDepartmentsVM(Department editDepartments, CurrentPageControl currentPageControl)
         {
             this.currentPageControl = currentPageControl;
             EditDemartment = editDepartments;
@@ -45,7 +45,7 @@ namespace kursovaya.Vm
         {
             SaveDemartment = new Command(() => {
                 var model = Sql.GetInstance();
-                if (EditDemartment.ID == 0)
+                if (EditDemartment.IDDepatment == 0)
                     model.Insert(EditDemartment);
                 else
                   //  model.Update(EditDemartment);

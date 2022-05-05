@@ -8,10 +8,10 @@ using kursovaya.Tools;
 namespace kursovaya.DTO
 {
     [Table("department")]
-    public class Departments
+    public class Department
     {
         [Column("idDepartment")]
-        public int ID { get; set; }
+        public int IDDepatment { get; set; }
         [Column("Title")]
         public string Title { get; set; }
     }

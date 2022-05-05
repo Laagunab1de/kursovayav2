@@ -22,24 +22,30 @@ using MySql.Data.MySqlClient;
 
 namespace kursovaya.Vm
 {
-    public class ViewDepartmentsVM : BaseVm
+    class ViewDepartmentsVM : BaseVm
     {
 
-        public List<Departments> Departments
+        private List<Department> departments;
+        public List<Department> Departments
         {
-            get => Departments;
+            get => departments;
             set
             {
-                Departments = value;
+                departments = value;
                 Signal();
             }
         }
-        public Enrolle SelectedEnrolle { get; set; }
 
-        public ViewDepartmentsVM(Departments selectedDepartment)
+        public ViewDepartmentsVM()
         {
-            Sql sqlModel = Sql.GetInstance();
-            //Departments = sqlModel.SelectDisciplinesRange(0, 100);
+            Departments = Sql.GetInstance().SelectDepartments();
+            InitPages();
+        }
+
+        private void InitPages()
+        {
+            var sqlModel = Sql.GetInstance();
+            int pageCount = (sqlModel.GetNumRows(typeof(Department)));
 
         }
     }

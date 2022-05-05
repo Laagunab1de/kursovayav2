@@ -61,7 +61,7 @@ namespace kursovaya.Vm
             });
             ViewDepartment = new Command(() =>
             {
-                currentPageControl.SetPage(new ViewDepartmentsPage(null));
+                currentPageControl.SetPage(new ViewDepartmentsPage());
             });
             AddDepartment = new Command(() => {
                 currentPageControl.SetPage(new EditDepartmentsPage(null));

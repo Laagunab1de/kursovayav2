@@ -15,7 +15,11 @@ using System.Windows.Shapes;
 using kursovaya.DTO;
 using kursovaya.Vm;
 using kursovaya;
+using kursovaya.Model;
+using kursovaya.Pages;
+using kursovaya.Tools;
 using MySql.Data.MySqlClient;
+
 
 namespace kursovaya.Pages
 {
@@ -24,10 +28,10 @@ namespace kursovaya.Pages
     /// </summary>
     public partial class ViewDepartmentsPage : Page
     {
-        public ViewDepartmentsPage(ViewDepartmentsVM vm)
+        public ViewDepartmentsPage()
         {
             InitializeComponent();
-            DataContext = vm;
+            DataContext = new ViewDepartmentsVM();
         }
     }
 }
