@@ -73,7 +73,7 @@ namespace kursovaya.Model
                             Surname = dr.GetString("lastName"),
                             Patronymic = dr.GetString("patronymicName"),
                             DisciplineId = dr.GetInt32("group_id"),
-                            // Birthday = dr.GetDateTime("birthday")
+                            //Birthday = dr.GetDateTime("birthday")
                         });
                     }
                 }
@@ -86,7 +86,7 @@ namespace kursovaya.Model
         {
             var mySqlDB = MySqlDB.GetDB();
             var result = new List<Discipline>();
-            string sql = "select id, title from discipline";
+            string sql = "select IDDiscipline, title, NuberOfPlaces from discipline";
             if (mySqlDB.OpenConnection())
             {
                 using (MySqlCommand mc = new MySqlCommand(sql, mySqlDB.sqlConnection))
@@ -96,8 +96,9 @@ namespace kursovaya.Model
                     {
                         result.Add(new Discipline
                         {
-                            IDDisciplines = dr.GetInt32("id"),
+                            IDDisciplines = dr.GetInt32("IDDiscipline"),
                             Title = dr.GetString("title"),
+                            NuberOfPlaces = dr.GetInt32("NuberOfPlaces")
                         });
                     }
                 }
@@ -156,7 +157,7 @@ namespace kursovaya.Model
         {
             var Disciplines = new List<Discipline>();
             var mySqlDB = MySqlDB.GetDB();
-            string query = $"SELECT * FROM `Discipline`";
+            string query = $"SELECT * FROM `discipline`";
             if (mySqlDB.OpenConnection())
             {
                 using (MySqlCommand mc = new MySqlCommand(query, mySqlDB.sqlConnection))
@@ -166,8 +167,9 @@ namespace kursovaya.Model
                     {
                         Disciplines.Add(new Discipline
                         {
-                            IDDisciplines = dr.GetInt32("id"),
-                            Title = dr.GetString("title"),
+                            IDDisciplines = dr.GetInt32("idDiscipline"),
+                            Title = dr.GetString("Title"),
+                            NuberOfPlaces = dr.GetInt32("NuberOfPlaces"),
                         });
                     }
                 }

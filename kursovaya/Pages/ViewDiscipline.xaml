@@ -13,7 +13,7 @@
             <RowDefinition />
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <ListView ItemsSource="{Binding Discipline}">
+        <ListView ItemsSource="{Binding Disciplines}" Margin="18,-1,-18,1">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Наименование"  DisplayMemberBinding="{Binding Title}"/>

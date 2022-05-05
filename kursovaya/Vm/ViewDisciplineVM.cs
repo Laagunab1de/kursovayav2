@@ -24,15 +24,15 @@ namespace kursovaya.Vm
 {
     class ViewDisciplineVM : BaseVm
     {
-        public Discipline Discipline { get; set; }
-        public List<Discipline> disciplines;
+       
+        private List<Discipline> disciplines;
         private int viewRowsCount;
         public List<Discipline> Disciplines
         {
-            get => Disciplines;
+            get => disciplines;
             set
             {
-                Disciplines = value;    
+                disciplines = value;    
                 Signal();
             }
         }
@@ -51,7 +51,7 @@ namespace kursovaya.Vm
         {
 
             ViewRowsCount = 50;
-
+            Disciplines = Sql.GetInstance().SelectDisciplines();
             InitPages();
         }
 

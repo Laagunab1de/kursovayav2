@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:kursovaya.Pages"
+      xmlns:local="clr-namespace:kursovaya.Pages" xmlns:vm="clr-namespace:kursovaya.Vm" d:DataContext="{d:DesignInstance Type=vm:EditStandartEnrolleVM}"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="EditStandartEnrolle">
@@ -40,15 +40,14 @@
                 <TextBox Text="{Binding MedicalPolicy}" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
             </StackPanel>
 
-            <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Orientation="Vertical" DataContext="{Binding EditPassport}" Width="187" Height="432">
+            <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Orientation="Vertical" DataContext="{Binding EditEnrolle}" Width="187" Height="432">
                 <Label Content="Фамилия" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
                 <TextBox Text="{Binding Surname}" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
                 <Label Content="Имя" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
                 <TextBox Text="{Binding FirstName}" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
                 <Label Content="Отчество" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
-                <TextBox Text="{Binding patronymic}" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
-                <Label Content="Дата рождения" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
-                <DatePicker SelectedDate="{Binding Birthday}" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
+                <TextBox Text="{Binding Patronymic}" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
+               
                 <Label Content="Дата подачи заявления" MaxWidth="250" MinWidth="150"/>
                 <DatePicker SelectedDate="{Binding DateOfAdmission}" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
             </StackPanel>
@@ -57,18 +56,17 @@
                 <Label Content="Серия" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
                 <TextBox Text="{Binding Series}" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
                 <Label Content="Номер" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
-                <TextBox Text="{Binding Number}" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
-                <Label Content="Дата Выдачи" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
-                <DatePicker SelectedDate="{Binding DateofIssued}" MaxWidth="250" MinWidth="150" HorizontalAlignment="Center"/>
+                <TextBox Text="{Binding number}" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
+                <Label Content="Дата рождения" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
+                <DatePicker SelectedDate="{Binding Birthday}" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
                 <Label Content="Кем выдан" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
-                <TextBox Text="{Binding Issued_by}" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
-                <Label Content="Место регистрации" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
-                <TextBox Text="{Binding placeofregistration}" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
+                <TextBox Text="{Binding IssuedBy}" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
+               
             </StackPanel>
 
-            <StackPanel Orientation="Vertical" DataContext="{Binding Disciplines}" HorizontalAlignment="Left"  Width="144" Margin="0,236,0,181" >
+            <StackPanel Orientation="Vertical" DataContext="{Binding EnrolleDiscipline}" HorizontalAlignment="Left"  Width="144" Margin="0,236,0,181" >
                 <Label Content="Дисциплина"/>
-                <ComboBox ItemsSource="{Binding Discipline}"
+                <ComboBox ItemsSource="{Binding Disciplines}"
                   SelectedItem="{Binding EnrolleDiscipline}"
                   DisplayMemberPath="Title"/>
             </StackPanel>

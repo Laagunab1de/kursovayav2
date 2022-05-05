@@ -18,6 +18,7 @@ using kursovaya;
 using kursovaya.Model;
 using kursovaya.Pages;
 using kursovaya.Tools;
+using kursovaya.Pages;
 using MySql.Data.MySqlClient;
 
 namespace kursovaya.Vm
@@ -30,12 +31,12 @@ namespace kursovaya.Vm
         public DocStandart EditDocStandart { get; }
 
         public Command SaveEnrolle { get; set; }
-        public Discipline EnrolleDiscipline
-        {
-            get => EnrolleDiscipline;
+        public Discipline EnrolleDiscipline 
+        {        
+            get => enrolleDiscipline;
             set
             {
-                EnrolleDiscipline = value;
+                enrolleDiscipline = value;
                 Signal();
             }
         }
@@ -49,15 +50,21 @@ namespace kursovaya.Vm
         {
             this.currentPageControl = currentPageControl;
             EditEnrolle = new Enrolle();
+            EditCertificate = new Certificate();
+            EditPassport = new Passport();
+            EditDocStandart = new DocStandart();
             Init();
         }
 
-        public EditStandartEnrolleVM(Enrolle editEnrolle, CurrentPageControl currentPageControl)
+        public EditStandartEnrolleVM(Enrolle editEnrolle, CurrentPageControl currentPageControl, Passport editPassport, DocStandart editDocStandart, Certificate editCertificate)
         {
+            EditCertificate = editCertificate;
+            EditDocStandart = editDocStandart;
+            EditPassport = editPassport;
             EditEnrolle = editEnrolle;
             this.currentPageControl = currentPageControl;
             Init();
-            EnrolleDiscipline = Disciplines.FirstOrDefault(s => s.IDDisciplines == editEnrolle.DisciplineId);
+            EnrolleDiscipline = Disciplines.FirstOrDefault(s => s.ID == editEnrolle.DisciplineId);
         }
 
         private void Init()
