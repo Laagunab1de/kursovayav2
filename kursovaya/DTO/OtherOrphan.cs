@@ -37,7 +37,8 @@ namespace kursovaya.DTO
         public bool ResultsFluorographicExamination { get; set; }//флюшка 
         [Column("ContactPhoneNumbers")]
         public bool ContactPhoneNumbers { get; set; }//номер телефона 
-        [Column("PassportDetails_idPassportDetails")]
-        public int PassportDetails_idPassportDetails { get; set; }
+      
+        [Column("Enrollelist_idEnrollelist")]
+       public int Enrollelist_idEnrollelist { get; set; }
     }
 }

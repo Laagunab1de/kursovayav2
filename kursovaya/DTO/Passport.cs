@@ -20,6 +20,8 @@ namespace kursovaya.DTO
         public int number { get; set; }
         [Column("IssuedBy")]
         public string IssuedBy { get; set; }
-        
+
+        [Column("Enrollelist_idEnrollelist")]
+        public int Enrollelist_idEnrollelist { get; set; }
     }
 }

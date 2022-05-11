@@ -41,11 +41,20 @@ namespace kursovaya.Vm
             }
         }
 
+        public Department EnrolleDepartment
+        {
+            get => enrolleDepartment;
+            set
+            {
+                enrolleDepartment = value;
+                Signal();
+            }
+        }
         public List<Discipline> Disciplines { get; set; }
-
+        public List<Department> Departments { get; set; }
         private CurrentPageControl currentPageControl;
         private Discipline enrolleDiscipline;
-
+        private Department enrolleDepartment;
         public EditStandartEnrolleVM(CurrentPageControl currentPageControl)
         {
             this.currentPageControl = currentPageControl;
@@ -64,14 +73,16 @@ namespace kursovaya.Vm
             EditEnrolle = editEnrolle;
             this.currentPageControl = currentPageControl;
             Init();
-            EnrolleDiscipline = Disciplines.FirstOrDefault(s => s.ID == editEnrolle.DisciplineId);
+            EnrolleDiscipline = Disciplines.FirstOrDefault(s => s.ID == editEnrolle.Discipline_idDiscipline);
+            EnrolleDepartment = Departments.FirstOrDefault(s => s.IDDepatment == editEnrolle.Discipline_idDiscipline);
         }
 
         private void Init()
         {
+            Departments = Sql.GetInstance().SelectDepartmentsRange();
             Disciplines = Sql.GetInstance().SelectDisciplinesRange();
             SaveEnrolle = new Command(() => {
-                EditEnrolle.DisciplineId = EnrolleDiscipline.IDDisciplines;
+                EditEnrolle.Discipline_idDiscipline = EnrolleDiscipline.IDDisciplines;
                 var model = Sql.GetInstance();
                 if (EditEnrolle.idEnrollelist == 0)
                 {

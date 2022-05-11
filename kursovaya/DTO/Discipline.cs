@@ -13,7 +13,7 @@ namespace kursovaya.DTO
         [Column("IDDiscipline")]
         public int IDDisciplines { get; set; }
         [Column("Title")]
-        public string Title { get; set; } = "";
+        public string Title { get; set; }
         [Column("NuberOfPlaces")]
         public int NuberOfPlaces { get; set; }
     }

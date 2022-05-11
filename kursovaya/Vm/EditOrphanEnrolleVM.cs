@@ -61,14 +61,14 @@ namespace kursovaya.Vm
             EditOtherOrphan = editOtherOrphan;
             this.currentPageControl = currentPageControl;
             Init();
-            EnrolleDiscipline = Disciplines.FirstOrDefault(s => s.IDDisciplines == editEnrolle.DisciplineId);
+            EnrolleDiscipline = Disciplines.FirstOrDefault(s => s.IDDisciplines == editEnrolle.Discipline_idDiscipline);
         }
 
         private void Init()
         {
             Disciplines = Sql.GetInstance().SelectDisciplinesRange();
             SaveEnrolle = new Command(() => {
-                EditEnrolle.DisciplineId = EnrolleDiscipline.IDDisciplines;
+                EditEnrolle.Discipline_idDiscipline = EnrolleDiscipline.IDDisciplines;
                 var model = Sql.GetInstance();
                 if (EditEnrolle.ID == 0)
                 {

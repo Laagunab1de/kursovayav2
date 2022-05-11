@@ -58,7 +58,7 @@ namespace kursovaya.Model
             int id = selectedDiscipline?.IDDisciplines ?? 0;
             var Enrolles = new List<Enrolle>();
             var mySqlDB = MySqlDB.GetDB();
-            string query = $"SELECT * FROM `Enrollelist` WHERE IDDiscipline = {id}";
+            string query = $"SELECT * FROM `Enrollelist` WHERE idDiscipline = {id}";
             if (mySqlDB.OpenConnection())
             {
                 using (MySqlCommand mc = new MySqlCommand(query, mySqlDB.sqlConnection))
@@ -68,12 +68,15 @@ namespace kursovaya.Model
                     {
                         Enrolles.Add(new Enrolle
                         {
-                            idEnrollelist = dr.GetInt32("id"),
-                            FirstName = dr.GetString("firstName"),
-                            Surname = dr.GetString("lastName"),
-                            Patronymic = dr.GetString("patronymicName"),
-                            DisciplineId = dr.GetInt32("group_id"),
-                            //Birthday = dr.GetDateTime("birthday")
+                            idEnrollelist = dr.GetInt32("idEnrollelist"),
+                            FirstName = dr.GetString("Name"),
+                            Surname = dr.GetString("Surname"),
+                            Patronymic = dr.GetString("Patronymic"),
+                            AvailabilityOfBenefits = dr.GetString("AvailabilityOfBenefits"),
+                            NeedHostel = dr.GetBoolean("NeedHostel"),
+                            DateOfAdmission = dr.GetDateTime("DateOfAdmission"),
+                            Department_idDepartment = dr.GetInt32("Department_idDepartment"),
+                            Discipline_idDiscipline = dr.GetInt32("Discipline_idDiscipline"),
                         });
                     }
                 }
@@ -200,6 +203,34 @@ namespace kursovaya.Model
             }
             return Disciplines;
         }
+
+
+        public List<Department> SelectDepartmentsRange()
+        {
+            var Departments = new List<Department>();
+            var mySqlDB = MySqlDB.GetDB();
+            string query = $"SELECT * FROM `department`";
+            if (mySqlDB.OpenConnection())
+            {
+                using (MySqlCommand mc = new MySqlCommand(query, mySqlDB.sqlConnection))
+                using (MySqlDataReader dr = mc.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        Departments.Add(new Department
+                        {
+                            IDDepatment = dr.GetInt32("idDepartment"),
+                            Title = dr.GetString("Title"),                           
+                        });
+                    }
+                }
+                mySqlDB.CloseConnection();
+            }
+            return Departments;
+        }
+
+
+
 
         private static (string, MySqlParameter[]) CreateInsertQuery(string table, List<(string, object)> values)
         {

@@ -23,9 +23,8 @@ namespace kursovaya.DTO
         public string VaccinationCertificate { get; set; }
         [Column("MedicalPalicy")]
         public bool MedicalPolicy { get; set; }//полис
-        [Column("Certificate_idCertificate")]
-        public int Certificate_idCertificate { get; set; }
-        [Column("PassportDetails_idPassportDetails")]
-        public int PassportDetails_idPassportDetails { get; set; }//пасспорт
+
+        [Column("Enrollelist_idEnrollelist")]
+        public int Enrollelist_idEnrollelist { get; set; }
     }
 }

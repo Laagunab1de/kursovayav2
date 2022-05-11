@@ -16,5 +16,7 @@ namespace kursovaya.DTO
         public float GPA { get; set; }
         [Column("Originality")]
         public bool Originality { get; set; }
+        [Column("Enrollelist_idEnrollelist")]
+        public int Enrollelist_idEnrollelist { get; set; }
     }
 }

@@ -64,10 +64,14 @@
                
             </StackPanel>
 
-            <StackPanel Orientation="Vertical" DataContext="{Binding EnrolleDiscipline}" HorizontalAlignment="Left"  Width="144" Margin="0,236,0,181" >
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Left"  Width="144" Margin="0,236,0,181" >
                 <Label Content="Дисциплина"/>
                 <ComboBox ItemsSource="{Binding Disciplines}"
                   SelectedItem="{Binding EnrolleDiscipline}"
+                  DisplayMemberPath="Title"/>
+                <Label Content="Отделение"/>
+                <ComboBox ItemsSource="{Binding Departments}"
+                  SelectedItem="{Binding EnrolleDepartment}"
                   DisplayMemberPath="Title"/>
             </StackPanel>
             <Button Content="Сохранить" Command="{Binding SaveEnrolle}" Grid.ColumnSpan="3" Margin="1,453,0,-2" Grid.RowSpan="2"/>
