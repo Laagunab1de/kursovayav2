@@ -82,19 +82,19 @@ namespace kursovaya.Model
             }
         }
 
-        internal void ExecuteNonQuery(string query, MySqlParameter[] parameters = null)
-        {
-            if (OpenConnection())
-            {
-                using (MySqlCommand mc = new MySqlCommand(query, sqlConnection))
-                {
-                    if (parameters != null)
-                        mc.Parameters.AddRange(parameters);
-                    mc.ExecuteNonQuery();
-                }
-                CloseConnection();
-            }
-        }
+        //internal void ExecuteNonQuery(string query, MySqlParameter[] parameters = null)
+        //{
+        //    if (OpenConnection())
+        //    {
+        //        using (MySqlCommand mc = new MySqlCommand(query, sqlConnection))
+        //        {
+        //            if (parameters != null)
+        //                mc.Parameters.AddRange(parameters);
+        //            mc.ExecuteNonQuery();
+        //        }
+        //        CloseConnection();
+        //    }
+        //}
 
         internal int GetNextID(string table)
         {

@@ -58,7 +58,7 @@ namespace kursovaya.Model
             int id = selectedDiscipline?.IDDisciplines ?? 0;
             var Enrolles = new List<Enrolle>();
             var mySqlDB = MySqlDB.GetDB();
-            string query = $"SELECT * FROM `Enrollelist` WHERE idDiscipline = {id}";
+            string query = $"SELECT * FROM `Enrollelist` WHERE Discipline_idDiscipline = {id}";
             if (mySqlDB.OpenConnection())
             {
                 using (MySqlCommand mc = new MySqlCommand(query, mySqlDB.sqlConnection))
@@ -75,7 +75,7 @@ namespace kursovaya.Model
                             AvailabilityOfBenefits = dr.GetString("AvailabilityOfBenefits"),
                             NeedHostel = dr.GetBoolean("NeedHostel"),
                             DateOfAdmission = dr.GetDateTime("DateOfAdmission"),
-                            Department_idDepartment = dr.GetInt32("Department_idDepartment"),
+                            Department_idDepartment = dr.GetInt32("Department_idDepartment"),  //Department_idDepartment	
                             Discipline_idDiscipline = dr.GetInt32("Discipline_idDiscipline"),
                         });
                     }
@@ -144,7 +144,7 @@ namespace kursovaya.Model
             var db = MySqlDB.GetDB();
             // лучше эти 2 запроса объединить в один с помощью транзакции
             int id = db.GetNextID(table);
-            db.ExecuteNonQuery(query.Item1, query.Item2);
+           // db.ExecuteNonQuery(query.Item1, query.Item2);
             return id;
         }
         // обновляет объект в бд по его id
@@ -155,7 +155,7 @@ namespace kursovaya.Model
             GetMetaData(value, out table, out values);
             var query = CreateUpdateQuery(table, values, value.ID);
             var db = MySqlDB.GetDB();
-            db.ExecuteNonQuery(query.Item1, query.Item2);
+           // db.ExecuteNonQuery(query.Item1, query.Item2);
         }
 
         public void Delete<T>(T value) where T : BaseDTO
@@ -164,7 +164,7 @@ namespace kursovaya.Model
             string table = GetTableName(type);
             var db = MySqlDB.GetDB();
             string query = $"delete from `{table}` where id = {value.ID}";
-            db.ExecuteNonQuery(query);
+            //db.ExecuteNonQuery(query);
         }
 
         public int GetNumRows(Type type)

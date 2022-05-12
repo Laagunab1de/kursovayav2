@@ -8,7 +8,7 @@ using kursovaya.Tools;
 namespace kursovaya.DTO
 {
     [Table("otherstandart")]
-    public class DocStandart//доки для обычных студентов(не сирот)
+    public class DocStandart : BaseDTO//доки для обычных студентов(не сирот)
     {
         [Column("idOtherStandart")]
         public int Id { get; set; }

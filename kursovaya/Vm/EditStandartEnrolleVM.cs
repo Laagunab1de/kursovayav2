@@ -74,7 +74,7 @@ namespace kursovaya.Vm
             this.currentPageControl = currentPageControl;
             Init();
             EnrolleDiscipline = Disciplines.FirstOrDefault(s => s.ID == editEnrolle.Discipline_idDiscipline);
-            EnrolleDepartment = Departments.FirstOrDefault(s => s.IDDepatment == editEnrolle.Discipline_idDiscipline);
+            EnrolleDepartment = Departments.FirstOrDefault(s => s.IDDepatment == editEnrolle.Department_idDepartment);
         }
 
         private void Init()
@@ -87,8 +87,8 @@ namespace kursovaya.Vm
                 if (EditEnrolle.idEnrollelist == 0)
                 {
                     model.Insert(EditEnrolle);
-                    model.Update(EditCertificate);
-                    model.Update(EditPassport);
+                    model.Insert(EditCertificate);
+                    model.Insert(EditPassport);
                     model.Insert(EditDocStandart);
                 }
                 else
@@ -96,7 +96,7 @@ namespace kursovaya.Vm
                     model.Update(EditEnrolle);
                     model.Update(EditCertificate);
                     model.Update(EditPassport);
-                    model.Insert(EditDocStandart);
+                    model.Update(EditDocStandart);
                 }
                 currentPageControl.SetPage(new Enrollelist(EnrolleDiscipline));
             });
