@@ -10,8 +10,7 @@ namespace kursovaya.DTO
     [Table("enrollelist")]
     public class Enrolle : BaseDTO
     {
-        [Column("idEnrollelist")]
-        public int idEnrollelist { get; set; }//Ид
+       
         [Column("Surname")]
         public string Surname { get; set; }//Фамилия
         [Column("Name")]

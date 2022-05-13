@@ -37,7 +37,7 @@ namespace kursovaya.Model
         {
             int result = 0;
             var mySqlDB = MySqlDB.GetDB();
-            string query = $"SELECT count(*) FROM enrollelist WHERE IDDiscipline = " + Discipline.IDDisciplines;
+            string query = $"SELECT count(*) FROM enrollelist WHERE IDDiscipline = " + Discipline.ID;
             if (mySqlDB.OpenConnection())
             {
                 using (MySqlCommand mc = new MySqlCommand(query, mySqlDB.sqlConnection))
@@ -55,7 +55,7 @@ namespace kursovaya.Model
 
         internal List<Enrolle> SelectEnrollesByDiscipline(Discipline selectedDiscipline)
         {
-            int id = selectedDiscipline?.IDDisciplines ?? 0;
+            int id = selectedDiscipline?.ID ?? 0;
             var Enrolles = new List<Enrolle>();
             var mySqlDB = MySqlDB.GetDB();
             string query = $"SELECT * FROM `Enrollelist` WHERE Discipline_idDiscipline = {id}";
@@ -68,7 +68,7 @@ namespace kursovaya.Model
                     {
                         Enrolles.Add(new Enrolle
                         {
-                            idEnrollelist = dr.GetInt32("idEnrollelist"),
+                            ID = dr.GetInt32("idEnrollelist"),
                             FirstName = dr.GetString("Name"),
                             Surname = dr.GetString("Surname"),
                             Patronymic = dr.GetString("Patronymic"),
@@ -99,7 +99,7 @@ namespace kursovaya.Model
                     {
                         result.Add(new Discipline
                         {
-                            IDDisciplines = dr.GetInt32("IDDiscipline"),
+                            ID = dr.GetInt32("IDDiscipline"),
                             Title = dr.GetString("title"),
                             NuberOfPlaces = dr.GetInt32("NuberOfPlaces")
                         });
@@ -165,7 +165,7 @@ namespace kursovaya.Model
             string table = GetTableName(type);
             var db = MySqlDB.GetDB();
             string query = $"delete from `{table}` where id = {value.ID}";
-            //db.ExecuteNonQuery(query);
+            db.ExecuteNonQuery(query);
         }
 
         public int GetNumRows(Type type)
@@ -194,7 +194,7 @@ namespace kursovaya.Model
                     {
                         Disciplines.Add(new Discipline
                         {
-                            IDDisciplines = dr.GetInt32("idDiscipline"),
+                            ID = dr.GetInt32("idDiscipline"),
                             Title = dr.GetString("Title"),
                             NuberOfPlaces = dr.GetInt32("NuberOfPlaces"),
                         });

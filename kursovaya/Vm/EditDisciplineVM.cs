@@ -45,7 +45,7 @@ namespace kursovaya.Vm
         {
             SaveDiscipline = new Command(() => {
                 var model = Sql.GetInstance();
-                if (EditDiscipline.IDDisciplines == 0)
+                if (EditDiscipline.ID == 0)
                     model.Insert(EditDiscipline);
                 else
                     model.Update(EditDiscipline);

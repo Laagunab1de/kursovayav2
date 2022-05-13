@@ -10,8 +10,7 @@ namespace kursovaya.DTO
     [Table("certificate")]  
     public class Certificate : BaseDTO
     {
-        [Column("idCertificate")]
-        public int ID { get; set; }
+        
         [Column("GPA")]
         public float GPA { get; set; }
         [Column("Originality")]

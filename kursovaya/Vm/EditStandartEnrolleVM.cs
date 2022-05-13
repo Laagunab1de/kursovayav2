@@ -41,6 +41,15 @@ namespace kursovaya.Vm
             }
         }
 
+        public Certificate EnrolleCertificate
+        {
+            get => enrolleCertificate;
+            set
+            {
+                enrolleCertificate = value;
+                Signal();
+            }
+        }
         public Department EnrolleDepartment
         {
             get => enrolleDepartment;
@@ -51,10 +60,13 @@ namespace kursovaya.Vm
             }
         }
         public List<Discipline> Disciplines { get; set; }
+        public List<Certificate> Certificates { get; set; }
         public List<Department> Departments { get; set; }
         private CurrentPageControl currentPageControl;
         private Discipline enrolleDiscipline;
         private Department enrolleDepartment;
+        private Certificate enrolleCertificate;
+
         public EditStandartEnrolleVM(CurrentPageControl currentPageControl)
         {
             this.currentPageControl = currentPageControl;
@@ -75,6 +87,7 @@ namespace kursovaya.Vm
             Init();
             EnrolleDiscipline = Disciplines.FirstOrDefault(s => s.ID == editEnrolle.Discipline_idDiscipline);
             EnrolleDepartment = Departments.FirstOrDefault(s => s.ID == editEnrolle.Department_idDepartment);
+            EnrolleCertificate = Certificates.FirstOrDefault(s => s.ID == editCertificate.Enrollelist_idEnrollelist);
         }
 
         private void Init()
@@ -82,9 +95,12 @@ namespace kursovaya.Vm
             Departments = Sql.GetInstance().SelectDepartmentsRange();
             Disciplines = Sql.GetInstance().SelectDisciplinesRange();
             SaveEnrolle = new Command(() => {
-                EditEnrolle.Discipline_idDiscipline = EnrolleDiscipline.IDDisciplines;
+                EditEnrolle.Discipline_idDiscipline = EnrolleDiscipline.ID;
+                EditEnrolle.Department_idDepartment = EnrolleDepartment.IDDepatment;
+                EditCertificate.Enrollelist_idEnrollelist = 7;
+                
                 var model = Sql.GetInstance();
-                if (EditEnrolle.idEnrollelist == 0)
+                if (EditEnrolle.ID == 0)
                 {
                     model.Insert(EditEnrolle);
                     model.Insert(EditCertificate);
