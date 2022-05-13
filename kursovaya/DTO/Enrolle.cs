@@ -22,6 +22,7 @@ namespace kursovaya.DTO
         public string AvailabilityOfBenefits { get; set; }//Наличие льгот
         [Column("NeedHostel")]
         public bool NeedHostel { get; set; }
+
         [Column("DateOfAdmission")]
         public DateTime DateOfAdmission { get; set; }//Дата поступления 
         [Column("Discipline_idDiscipline")]

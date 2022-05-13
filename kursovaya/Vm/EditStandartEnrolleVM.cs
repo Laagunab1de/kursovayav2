@@ -74,7 +74,7 @@ namespace kursovaya.Vm
             this.currentPageControl = currentPageControl;
             Init();
             EnrolleDiscipline = Disciplines.FirstOrDefault(s => s.ID == editEnrolle.Discipline_idDiscipline);
-            EnrolleDepartment = Departments.FirstOrDefault(s => s.IDDepatment == editEnrolle.Department_idDepartment);
+            EnrolleDepartment = Departments.FirstOrDefault(s => s.ID == editEnrolle.Department_idDepartment);
         }
 
         private void Init()

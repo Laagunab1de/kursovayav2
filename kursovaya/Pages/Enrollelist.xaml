@@ -19,14 +19,15 @@
         </StackPanel>
         <ListView Grid.Row="1" ItemsSource="{Binding EnrollesBySelectedDiscipline}" SelectedItem="{Binding SelectedEnrolle}">
             <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Фамилия" DisplayMemberBinding="{Binding LastName}"/>
-                    <GridViewColumn Header="Имя" DisplayMemberBinding="{Binding surname}"/>
-                    <GridViewColumn Header="Отчество" DisplayMemberBinding="{Binding patronymic}"/>
-                    <GridViewColumn Header="Аттестат" DisplayMemberBinding="{Binding DisciplineId}"/>
-                    <GridViewColumn Header="Льготы" DisplayMemberBinding="{Binding Availabilityofbenefits}"/>
-                    <GridViewColumn Header="Общежитие" DisplayMemberBinding="{Binding Needsahostel}"/>
-                </GridView>
+                 <GridView>
+                    <GridViewColumn Header="Фамилия" DisplayMemberBinding="{Binding Surname}"/>
+                    <GridViewColumn Header="Имя" DisplayMemberBinding="{Binding FirstName}"/>
+                    <GridViewColumn Header="Отчество" DisplayMemberBinding="{Binding Patronymic}"/>
+                    <GridViewColumn Header="Аттестат" DisplayMemberBinding="{Binding Discipline_idDiscipline}"/>
+                    <GridViewColumn Header="Льготы" DisplayMemberBinding="{Binding AvailabilityOfBenefits}"/>
+                    <GridViewColumn Header="Общежитие" DisplayMemberBinding="{Binding NeedHostel}"/>
+                    <GridViewColumn Header="дата подачи заявления" DisplayMemberBinding="{Binding DateOfAdmission}"/>
+                 </GridView>
             </ListView.View>
         </ListView>
     </Grid>

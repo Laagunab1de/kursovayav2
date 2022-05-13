@@ -135,6 +135,7 @@ namespace kursovaya.Model
         }
         //INSERT INTO `group` set title = '1125', year = 2018;
         //возвращает ID добавленной записи
+
         public int Insert<T>(T value)
         {
             string table;
@@ -144,7 +145,7 @@ namespace kursovaya.Model
             var db = MySqlDB.GetDB();
             // лучше эти 2 запроса объединить в один с помощью транзакции
             int id = db.GetNextID(table);
-           // db.ExecuteNonQuery(query.Item1, query.Item2);
+            db.ExecuteNonQuery(query.Item1, query.Item2);
             return id;
         }
         // обновляет объект в бд по его id
@@ -155,7 +156,7 @@ namespace kursovaya.Model
             GetMetaData(value, out table, out values);
             var query = CreateUpdateQuery(table, values, value.ID);
             var db = MySqlDB.GetDB();
-           // db.ExecuteNonQuery(query.Item1, query.Item2);
+            db.ExecuteNonQuery(query.Item1, query.Item2);
         }
 
         public void Delete<T>(T value) where T : BaseDTO
