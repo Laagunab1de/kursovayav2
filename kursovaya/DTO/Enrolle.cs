@@ -11,6 +11,8 @@ namespace kursovaya.DTO
     public class Enrolle : BaseDTO
     {
        
+        [Column("ID")]
+        public int ID { get; set; }
         [Column("Surname")]
         public string Surname { get; set; }//Фамилия
         [Column("Name")]

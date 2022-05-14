@@ -18,7 +18,6 @@
                 <MenuItem Header="Абитуриенты">
                     <MenuItem Header="Добавить абитуриента" Command="{Binding EditStandartEnrolle}"/>
                     <MenuItem Header="Список абитуриентов" Command="{Binding ViewEnrollee}"/>
-                    <MenuItem Header="Добавить абитуриента(сирота)" Command="{Binding EditOrphanEnrolle}"/>
                 </MenuItem>
                 <MenuItem Header="Дисциплины">
                     <MenuItem Header="Добавить Дисциплину" Command="{Binding AddDiscipline}"/>

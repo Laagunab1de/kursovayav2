@@ -23,12 +23,13 @@ using MySql.Data.MySqlClient;
 
 namespace kursovaya.Vm
 {
-    public class EditStandartEnrolleVM : BaseVm
+    public class EditDocStandartVM : BaseVm
     {
-        public Enrolle EditEnrolle { get; }
-        public Command EditCertificatePage { get; set; }
-        public Discipline EnrolleDiscipline 
-        {        
+        public DocStandart EditDocStandart { get; }
+
+        public Command SaveEnrolle { get; set; }
+        public Discipline EnrolleDiscipline
+        {
             get => enrolleDiscipline;
             set
             {
@@ -37,59 +38,47 @@ namespace kursovaya.Vm
             }
         }
 
-        public Department EnrolleDepartment
-        {
-            get => enrolleDepartment;
-            set
-            {
-                enrolleDepartment = value;
-                Signal();
-            }
-        }
+
         public List<Discipline> Disciplines { get; set; }
-        public List<Department> Departments { get; set; }
+
         private CurrentPageControl currentPageControl;
         private Discipline enrolleDiscipline;
-        private Department enrolleDepartment;
 
-        public EditStandartEnrolleVM(CurrentPageControl currentPageControl)
+
+        public EditDocStandartVM(CurrentPageControl currentPageControl)
         {
             this.currentPageControl = currentPageControl;
-            EditEnrolle = new Enrolle();          
+            EditDocStandart = new DocStandart();
             Init();
         }
 
-        public EditStandartEnrolleVM(Enrolle editEnrolle, CurrentPageControl currentPageControl)
+        public EditDocStandartVM(Enrolle editEnrolle, CurrentPageControl currentPageControl, Passport editPassport, DocStandart editDocStandart, Certificate editCertificate)
         {
-          
-            EditEnrolle = editEnrolle;
+
+            EditDocStandart = editDocStandart;
             this.currentPageControl = currentPageControl;
             Init();
             EnrolleDiscipline = Disciplines.FirstOrDefault(s => s.ID == editEnrolle.Discipline_idDiscipline);
-            EnrolleDepartment = Departments.FirstOrDefault(s => s.ID == editEnrolle.Department_idDepartment);         
         }
 
         private void Init()
         {
-            Departments = Sql.GetInstance().SelectDepartmentsRange();
+
             Disciplines = Sql.GetInstance().SelectDisciplinesRange();
-            EditCertificatePage = new Command(() => { 
-                EditEnrolle.Discipline_idDiscipline = EnrolleDiscipline.ID;
-                EditEnrolle.Department_idDepartment = EnrolleDepartment.IDDepatment;
-               
-                
+            SaveEnrolle = new Command(() =>
+            {
+                EditDocStandart.Enrollelist_idEnrollelist = 7;
+
                 var model = Sql.GetInstance();
-                if (EditEnrolle.ID == 0)
+                if (EditDocStandart.ID == 0)
                 {
-                    model.Insert(EditEnrolle);
-                  
+                    model.Insert(EditDocStandart);
                 }
                 else
                 {
-                    model.Update(EditEnrolle);
-                   
+                    model.Update(EditDocStandart);
                 }
-                currentPageControl.SetPage(new EditCertificate());
+                currentPageControl.SetPage(new Enrollelist(EnrolleDiscipline));
             });
         }
     }

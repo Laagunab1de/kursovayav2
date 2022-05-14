@@ -10,9 +10,7 @@ namespace kursovaya.DTO
     [Table("otherstandart")]
     public class DocStandart : BaseDTO//доки для обычных студентов(не сирот)
     {
-        [Column("idOtherStandart")]
-        public int Id { get; set; }
-      
+    
         [Column("Photo")]
         public bool Photo { get; set; } //фото
         [Column("FlurograohicExam")]

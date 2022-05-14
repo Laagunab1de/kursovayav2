@@ -56,7 +56,7 @@ namespace kursovaya.Model
         internal List<Enrolle> SelectEnrollesByDiscipline(Discipline selectedDiscipline)
         {
             int id = selectedDiscipline?.ID ?? 0;
-            var Enrolles = new List<Enrolle>();
+            var enrolles = new List<Enrolle>();
             var mySqlDB = MySqlDB.GetDB();
             string query = $"SELECT * FROM `Enrollelist` WHERE Discipline_idDiscipline = {id}";
             if (mySqlDB.OpenConnection())
@@ -66,9 +66,9 @@ namespace kursovaya.Model
                 {
                     while (dr.Read())
                     {
-                        Enrolles.Add(new Enrolle
+                        enrolles.Add(new Enrolle
                         {
-                            ID = dr.GetInt32("idEnrollelist"),
+                            ID = dr.GetInt32("ID"),
                             FirstName = dr.GetString("Name"),
                             Surname = dr.GetString("Surname"),
                             Patronymic = dr.GetString("Patronymic"),
@@ -82,7 +82,7 @@ namespace kursovaya.Model
                 }
                 mySqlDB.CloseConnection();
             }
-            return Enrolles;
+            return enrolles;
         }
 
         internal List<Discipline> SelectDisciplines()
