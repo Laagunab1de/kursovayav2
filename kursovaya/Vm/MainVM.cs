@@ -80,7 +80,7 @@ namespace kursovaya.Vm
                 currentPageControl.SetPage(new EditPassport());
             });
             EditCertificatePage = new Command(() => {
-                currentPageControl.SetPage(new EditCertificate());
+                currentPageControl.SetPage(new EditCertificate(null));
             });
             EditDocStandart = new Command(() => {
                 currentPageControl.SetPage(new EditDocStandart());

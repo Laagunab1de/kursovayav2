@@ -205,6 +205,7 @@ namespace kursovaya.Model
             return Disciplines;
         }
 
+       
 
         public List<Department> SelectDepartmentsRange()
         {
@@ -231,7 +232,36 @@ namespace kursovaya.Model
         }
 
 
-
+        public List<Enrolle> SelectEnrollesRange()
+        {
+            var Enrolles = new List<Enrolle>();
+            var mySqlDB = MySqlDB.GetDB();
+            string query = $"SELECT * FROM `enrollelist`";
+            if (mySqlDB.OpenConnection())
+            {
+                using (MySqlCommand mc = new MySqlCommand(query, mySqlDB.sqlConnection))
+                using (MySqlDataReader dr = mc.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        Enrolles.Add(new Enrolle
+                        {
+                            ID = dr.GetInt32("ID"),
+                            FirstName = dr.GetString("Name"),
+                            Surname = dr.GetString("Surname"),
+                            Patronymic = dr.GetString("Patronymic"),
+                            AvailabilityOfBenefits = dr.GetString("AvailabilityOfBenefits"),
+                            NeedHostel = dr.GetBoolean("NeedHostel"),
+                            DateOfAdmission = dr.GetDateTime("DateOfAdmission"),
+                            Department_idDepartment = dr.GetInt32("Department_idDepartment"),  //Department_idDepartment	
+                            Discipline_idDiscipline = dr.GetInt32("Discipline_idDiscipline"),
+                        });
+                    }
+                }
+                mySqlDB.CloseConnection();
+            }
+            return Enrolles;
+        }
 
         private static (string, MySqlParameter[]) CreateInsertQuery(string table, List<(string, object)> values)
         {

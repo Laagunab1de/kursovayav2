@@ -89,7 +89,7 @@ namespace kursovaya.Vm
                     model.Update(EditEnrolle);
                    
                 }
-                currentPageControl.SetPage(new EditCertificate());
+                currentPageControl.SetPage(new EditCertificate(null));
             });
         }
     }

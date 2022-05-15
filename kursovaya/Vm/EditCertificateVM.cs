@@ -18,7 +18,7 @@ using kursovaya;
 using kursovaya.Model;
 using kursovaya.Pages;
 using kursovaya.Tools;
-using kursovaya.Pages;
+
 using MySql.Data.MySqlClient;
 
 namespace kursovaya.Vm
@@ -29,7 +29,7 @@ namespace kursovaya.Vm
         public Certificate EditCertificate { get; }
         public Command EditPassportPage { get; set; }
        
-        public Certificate EnrolleCertificate
+        public Enrolle EnrolleCertificate
         {
             get => enrolleCertificate;
             set
@@ -39,10 +39,10 @@ namespace kursovaya.Vm
             }
         }
     
-        public List<Certificate> Certificates { get; set; }       
+        public List<Enrolle> Enrolles { get; set; }       
         private CurrentPageControl currentPageControl;
     
-        private Certificate enrolleCertificate;
+        private Enrolle enrolleCertificate;
 
         public EditCertificateVM(CurrentPageControl currentPageControl)
         {
@@ -51,32 +51,28 @@ namespace kursovaya.Vm
             Init();
         }
 
-        public EditCertificateVM(Enrolle editEnrolle, CurrentPageControl currentPageControl, Passport editPassport, DocStandart editDocStandart, Certificate editCertificate)
+        public EditCertificateVM(CurrentPageControl currentPageControl, Certificate editCertificate)
         {
             EditCertificate = editCertificate;          
             this.currentPageControl = currentPageControl;
             Init();            
-            EnrolleCertificate = Certificates.FirstOrDefault(s => s.ID == editCertificate.Enrollelist_idEnrollelist);
+            EnrolleCertificate = Enrolles.FirstOrDefault(s => s.ID == editCertificate.Enrollelist_idEnrollelist);
         }
 
         private void Init()
         {
-
+            Enrolles = Sql.GetInstance().SelectEnrollesRange();
             EditPassportPage = new Command(() => {              
-                EditCertificate.Enrollelist_idEnrollelist = 7;
+                EditCertificate.Enrollelist_idEnrollelist = EnrolleCertificate.ID;
 
                 var model = Sql.GetInstance();
                 if (EditCertificate.ID == 0)
-                {
-                    
-                    model.Insert(EditCertificate);
-                    
+                {              
+                    model.Insert(EditCertificate);                  
                 }
                 else
-                {
-                   
-                    model.Update(EditCertificate);
-                   
+                {                   
+                    model.Update(EditCertificate);   
                 }
                 currentPageControl.SetPage(new EditPassport());
             });
