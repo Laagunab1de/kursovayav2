@@ -13,9 +13,9 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-       <StackPanel DataContext="{Binding EditDemartment}" Margin="0,0,0,163">
+        <StackPanel DataContext="{Binding EditDepartment}" Margin="0,0,0,163">
          <Label Content="Название"/>
-            <TextBox Text="{Binding EditDemartment.Title}"/>
+            <TextBox Text="{Binding Title}"/>
          
        </StackPanel>
        <StackPanel Margin="1,79,-1,146" Grid.RowSpan="2">

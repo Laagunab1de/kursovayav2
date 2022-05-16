@@ -7,12 +7,13 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="EditDiscipline">
-
     <StackPanel>
+        <StackPanel DataContext="{Binding EditDiscipline}">
         <Label Content="Название"/>
-        <TextBox Text="{Binding EditDiscipline.Title}"/>
+        <TextBox Text="{Binding Title}"/>
         <Label Content="Число мест"/>
-        <TextBox Text="{Binding EditDiscipline.NuberOfPlaces}"/>
+            <TextBox Text="{Binding NuberOfPlaces}"/>
+        </StackPanel>
         <Button Content="Сохранить" Command="{Binding SaveDiscipline}" />
     </StackPanel>
 </Page>

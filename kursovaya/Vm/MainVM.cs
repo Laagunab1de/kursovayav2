@@ -54,7 +54,7 @@ namespace kursovaya.Vm
                 currentPageControl.SetPage(new EditOrphanEnrolle(new EditOrphanEnrolleVM(currentPageControl)));
             });
             AddDiscipline = new Command(() => {
-                currentPageControl.SetPage(new EditDiscipline(null));
+                currentPageControl.SetPage(new EditDiscipline(new EditDisciplineVM(currentPageControl)));
             });
             ViewDiscipline = new Command(() => {
                 currentPageControl.SetPage(new ViewDiscipline());
@@ -64,7 +64,7 @@ namespace kursovaya.Vm
                 currentPageControl.SetPage(new ViewDepartmentsPage());
             });
             AddDepartment = new Command(() => {
-                currentPageControl.SetPage(new EditDepartmentsPage(null));
+                currentPageControl.SetPage(new EditDepartmentsPage(new EditDepartmentsVM(currentPageControl)));
             });
             ConnectToBDCom = new Command(() => {
                 currentPageControl.SetPage(new ConnectToBD());
