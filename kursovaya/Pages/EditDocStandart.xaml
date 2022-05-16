@@ -7,8 +7,8 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="EditDocStandart">
-
-    <StackPanel Orientation="Vertical" DataContext="{Binding EditDocStandart}" Grid.Column="1" HorizontalAlignment="Center" Width="150">
+    <StackPanel MinWidth="150">
+        <StackPanel Orientation="Vertical" DataContext="{Binding EditDocStandart}" Grid.Column="1" HorizontalAlignment="Center" Width="150">
         <Label Content="Фото" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
         <TextBox Text="{Binding Photo}" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
         <Label Content="Флюрография" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
@@ -17,6 +17,12 @@
         <TextBox Text="{Binding CopyOfSnils}" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
         <Label Content="Полис" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
         <TextBox Text="{Binding MedicalPolicy}" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
+        
+    </StackPanel>
+        <Label Content="Cтудент"/>
+        <ComboBox ItemsSource="{Binding Enrolles}"
+                  SelectedItem="{Binding EnrolleDocStandart}"
+                  DisplayMemberPath="ID"/>
         <Button Content="Сохранить" Command="{Binding SaveEnrolle}"/>
     </StackPanel>
 </Page>

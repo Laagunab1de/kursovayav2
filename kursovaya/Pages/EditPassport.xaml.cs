@@ -1,4 +1,5 @@
-﻿using System;
+﻿using kursovaya.Vm;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,10 @@ namespace kursovaya.Pages
     /// </summary>
     public partial class EditPassport : Page
     {
-        public EditPassport()
+        public EditPassport(EditPasspotVM vm)
         {
             InitializeComponent();
+            DataContext = vm;
         }
     }
 }

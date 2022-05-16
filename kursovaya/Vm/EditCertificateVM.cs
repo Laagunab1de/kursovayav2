@@ -18,7 +18,6 @@ using kursovaya;
 using kursovaya.Model;
 using kursovaya.Pages;
 using kursovaya.Tools;
-
 using MySql.Data.MySqlClient;
 
 namespace kursovaya.Vm
@@ -74,7 +73,7 @@ namespace kursovaya.Vm
                 {                   
                     model.Update(EditCertificate);   
                 }
-                currentPageControl.SetPage(new EditPassport());
+                currentPageControl.SetPage(new EditPassport(new EditPasspotVM(currentPageControl)));
             });
         }
     }

@@ -25,25 +25,22 @@ namespace kursovaya.Vm
 {
     public class EditPasspotVM : BaseVm
     {
-       
-       
         public Passport EditPassport { get; }
-
         public Command EditDocStandart { get; set; }
         public Command EditOtherOrphan { get; set; }
-        public Discipline EnrolleDiscipline
+        public Enrolle EnrollePassport
         {
-            get => enrolleDiscipline;
+            get => enrollePassport;
             set
             {
-                enrolleDiscipline = value;
+                enrollePassport = value;
                 Signal();
             }
         }
-        public List<Discipline> Disciplines { get; set; }
+        public List<Enrolle> Enrolles { get; set; }
        
         private CurrentPageControl currentPageControl;
-        private Discipline enrolleDiscipline;
+        private Enrolle enrollePassport;
        
         public EditPasspotVM(CurrentPageControl currentPageControl)
         {
@@ -54,23 +51,22 @@ namespace kursovaya.Vm
             Init();
         }
 
-        public EditPasspotVM(Enrolle editEnrolle, CurrentPageControl currentPageControl, Passport editPassport, DocStandart editDocStandart, Certificate editCertificate)
+        public EditPasspotVM(Enrolle editEnrolle, CurrentPageControl currentPageControl, Passport editPassport)
         {
-          
-            EditPassport = editPassport;
-            
+            EditPassport = editPassport;       
             this.currentPageControl = currentPageControl;
             Init();
-            EnrolleDiscipline = Disciplines.FirstOrDefault(s => s.ID == editEnrolle.Discipline_idDiscipline);
-            
+            EnrollePassport = Enrolles.FirstOrDefault(s => s.ID == editPassport.Enrollelist_idEnrollelist);
+
         }
 
         private void Init()
         {
            
-            Disciplines = Sql.GetInstance().SelectDisciplinesRange();
+            Enrolles = Sql.GetInstance().SelectEnrollesRange();
             EditDocStandart = new Command(() =>
             {
+                EditPassport.Enrollelist_idEnrollelist = EnrollePassport.ID;
                 var model = Sql.GetInstance();
                 if (EditPassport.ID == 0)
                 {                 
@@ -80,10 +76,11 @@ namespace kursovaya.Vm
                 {               
                     model.Update(EditPassport);  
                 }
-                currentPageControl.SetPage(new EditDocStandart()); 
+                currentPageControl.SetPage(new EditDocStandart(new EditDocStandartVM(currentPageControl))); 
             });
             EditOtherOrphan = new Command(() =>
             {
+                EditPassport.Enrollelist_idEnrollelist = EnrollePassport.ID;
                 var model = Sql.GetInstance();
                 if (EditPassport.ID == 0)
                 {
@@ -93,7 +90,7 @@ namespace kursovaya.Vm
                 {
                     model.Update(EditPassport);
                 }
-                currentPageControl.SetPage(new EditOthetOrphan());
+                currentPageControl.SetPage(new EditOthetOrphan(new EditOtherOrphanVM(currentPageControl)));
             });
         }
     }

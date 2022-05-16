@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using kursovaya.Vm;
 namespace kursovaya.Pages
 {
     /// <summary>
@@ -20,9 +20,10 @@ namespace kursovaya.Pages
     /// </summary>
     public partial class EditDocStandart : Page
     {
-        public EditDocStandart()
+        public EditDocStandart(EditDocStandartVM vm)
         {
             InitializeComponent();
+            DataContext = vm;
         }
     }
 }

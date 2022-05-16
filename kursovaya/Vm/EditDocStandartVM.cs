@@ -28,21 +28,21 @@ namespace kursovaya.Vm
         public DocStandart EditDocStandart { get; }
 
         public Command SaveEnrolle { get; set; }
-        public Discipline EnrolleDiscipline
+        public Enrolle EnrolleDocStandart
         {
-            get => enrolleDiscipline;
+            get => enrolleDocStandart;
             set
             {
-                enrolleDiscipline = value;
+                enrolleDocStandart = value;
                 Signal();
             }
         }
 
 
-        public List<Discipline> Disciplines { get; set; }
+        public List<Enrolle> Enrolles { get; set; }
 
         private CurrentPageControl currentPageControl;
-        private Discipline enrolleDiscipline;
+        private Enrolle enrolleDocStandart;
 
 
         public EditDocStandartVM(CurrentPageControl currentPageControl)
@@ -52,22 +52,22 @@ namespace kursovaya.Vm
             Init();
         }
 
-        public EditDocStandartVM(Enrolle editEnrolle, CurrentPageControl currentPageControl, Passport editPassport, DocStandart editDocStandart, Certificate editCertificate)
+        public EditDocStandartVM(Enrolle editEnrolle, CurrentPageControl currentPageControl, DocStandart editDocStandart)
         {
 
             EditDocStandart = editDocStandart;
             this.currentPageControl = currentPageControl;
             Init();
-            EnrolleDiscipline = Disciplines.FirstOrDefault(s => s.ID == editEnrolle.Discipline_idDiscipline);
+            EnrolleDocStandart = Enrolles.FirstOrDefault(s => s.ID == editDocStandart.Enrollelist_idEnrollelist);
         }
 
         private void Init()
         {
 
-            Disciplines = Sql.GetInstance().SelectDisciplinesRange();
+            Enrolles = Sql.GetInstance().SelectEnrollesRange();
             SaveEnrolle = new Command(() =>
             {
-                EditDocStandart.Enrollelist_idEnrollelist = 7;
+                EditDocStandart.Enrollelist_idEnrollelist = EnrolleDocStandart.ID;
 
                 var model = Sql.GetInstance();
                 if (EditDocStandart.ID == 0)
@@ -78,7 +78,7 @@ namespace kursovaya.Vm
                 {
                     model.Update(EditDocStandart);
                 }
-                currentPageControl.SetPage(new Enrollelist(EnrolleDiscipline));
+                currentPageControl.SetPage(new Enrollelist(null));
             });
         }
     }

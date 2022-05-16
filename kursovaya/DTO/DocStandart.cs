@@ -12,15 +12,14 @@ namespace kursovaya.DTO
     {
     
         [Column("Photo")]
-        public bool Photo { get; set; } //фото
-        [Column("FlurograohicExam")]
-        public bool FlurograohicExam { get; set; }//флюшка
+        public string Photo { get; set; } //фото
+        [Column("FlurographicExam")]
+        public string FlurograohicExam { get; set; }//флюшка
         [Column("Snils")]
-        public int CopyOfSnils { get; set; }//снилс
-        [Column("VaccinationCertificate")]
-        public string VaccinationCertificate { get; set; }
+        public string CopyOfSnils { get; set; }//снилс
+            
         [Column("MedicalPalicy")]
-        public bool MedicalPolicy { get; set; }//полис
+        public string MedicalPolicy { get; set; }//полис
 
         [Column("Enrollelist_idEnrollelist")]
         public int Enrollelist_idEnrollelist { get; set; }

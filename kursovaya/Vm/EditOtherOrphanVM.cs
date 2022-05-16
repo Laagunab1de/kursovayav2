@@ -29,21 +29,21 @@ namespace kursovaya.Vm
         public OtherOrphan EditOtherOrphan { get; }
 
         public Command SaveEnrolle { get; set; }
-        public Discipline EnrolleDiscipline
+        public Enrolle EnrolleOtherOrphan
         {
-            get => enrolleDiscipline;
+            get => enrolleOtherOrphan;
             set
             {
-                enrolleDiscipline = value;
+                enrolleOtherOrphan = value;
                 Signal();
             }
         }
 
       
-        public List<Discipline> Disciplines { get; set; }
+        public List<Enrolle> Enrolles { get; set; }
         
         private CurrentPageControl currentPageControl;
-        private Discipline enrolleDiscipline;
+        private Enrolle enrolleOtherOrphan;
        
 
         public EditOtherOrphanVM(CurrentPageControl currentPageControl)
@@ -53,7 +53,7 @@ namespace kursovaya.Vm
             Init();
         }
 
-        public EditOtherOrphanVM(Enrolle editEnrolle, CurrentPageControl currentPageControl, Passport editPassport, OtherOrphan editOtherOrphan, Certificate editCertificate)
+        public EditOtherOrphanVM(CurrentPageControl currentPageControl, OtherOrphan editOtherOrphan)
         {
             EditOtherOrphan = editOtherOrphan;           
             this.currentPageControl = currentPageControl;
@@ -62,9 +62,10 @@ namespace kursovaya.Vm
 
         private void Init()
         {
+            Enrolles = Sql.GetInstance().SelectEnrollesRange();
             SaveEnrolle = new Command(() =>
             {
-                EditOtherOrphan.Enrollelist_idEnrollelist = 7;
+                EditOtherOrphan.Enrollelist_idEnrollelist = EnrolleOtherOrphan.ID;
                 var model = Sql.GetInstance();
                 if (EditOtherOrphan.ID == 0)
                 {
@@ -75,7 +76,7 @@ namespace kursovaya.Vm
                 {
                     model.Update(EditOtherOrphan);
                 }
-                currentPageControl.SetPage(new Enrollelist(EnrolleDiscipline));
+                currentPageControl.SetPage(new Enrollelist(null));
             });
         } 
     }

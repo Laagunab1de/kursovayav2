@@ -14,8 +14,11 @@
             <TextBox Text="{Binding GPA}"  Width="230" HorizontalAlignment="Left"/>
             <Label Content="Оригинал?"   Width="230" HorizontalAlignment="Left"/>
             <TextBox Text="{Binding Originality}"   Width="230" HorizontalAlignment="Left"/>
-
         </StackPanel>
+        <Label Content="Cтудент"/>
+        <ComboBox ItemsSource="{Binding Enrolles}"
+                  SelectedItem="{Binding EnrolleCertificate}"
+                  DisplayMemberPath="ID"/>
         <Button Content="Далее>>>>>" Command="{Binding EditPassportPage}"/>
     </StackPanel>
 </Page>

@@ -32,10 +32,6 @@ namespace kursovaya.Vm
 
         }
 
-        public Command EditDocStandart { get; set; }
-        public Command EditCertificatePage { get; set; }
-        public Command EditPassportPage { get; set; }
-        public Command EditOtherOrphan { get; set; }
         public Command ConnectToBDCom { get; set; }
         public Command ViewDepartment { get; set; }
         public Command AddDepartment { get; set; }
@@ -73,18 +69,7 @@ namespace kursovaya.Vm
             ConnectToBDCom = new Command(() => {
                 currentPageControl.SetPage(new ConnectToBD());
             });
-            EditOtherOrphan = new Command(() => {
-                currentPageControl.SetPage(new EditOthetOrphan());
-            });
-            EditPassportPage = new Command(() => {
-                currentPageControl.SetPage(new EditPassport());
-            });
-            EditCertificatePage = new Command(() => {
-                currentPageControl.SetPage(new EditCertificate(null));
-            });
-            EditDocStandart = new Command(() => {
-                currentPageControl.SetPage(new EditDocStandart());
-            });
+          
         }
 
         private void CurrentPageControl_PageChanged(object sender, EventArgs e)

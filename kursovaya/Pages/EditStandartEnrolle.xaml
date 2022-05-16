@@ -30,9 +30,11 @@
                 <TextBox Text="{Binding Patronymic}" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
                 <Label Content="Дата подачи заявления" MaxWidth="250" MinWidth="150"/>
                 <DatePicker SelectedDate="{Binding DateOfAdmission}" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
+                <Label Content="Наличие льгот" MaxWidth="250" MinWidth="150"/>
+                <TextBox Text="{Binding AvailabilityOfBenefits}" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
             </StackPanel>
 
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Left"  Width="144" Margin="114,181,0,236" Grid.Column="1" >
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Left"  Width="144" Margin="113,224,0,193" Grid.Column="1" >
                 <Label Content="Дисциплина"/>
                 <ComboBox ItemsSource="{Binding Disciplines}"
                   SelectedItem="{Binding EnrolleDiscipline}"
@@ -42,7 +44,7 @@
                   SelectedItem="{Binding EnrolleDepartment}"
                   DisplayMemberPath="Title"/>
             </StackPanel>
-            <Button Content="Далее" Command="{Binding EditCertificatePage}"  Width="144" Height="50" Grid.Column="1" Margin="113,300,143,160"/>
+            <Button Content="Далее" Command="{Binding EditCertificatePage}"  Width="144" Height="50" Grid.Column="1" Margin="113,328,143,132"/>
         </Grid>
     </StackPanel>
 </Page>
