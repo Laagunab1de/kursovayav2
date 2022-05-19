@@ -14,7 +14,7 @@
             <RowDefinition />
         </Grid.RowDefinitions>
         <Menu>
-            <MenuItem Header="Справочники">
+            <MenuItem Header="Функции">
                 <MenuItem Header="Абитуриенты">
                     <MenuItem Header="Добавить абитуриента" Command="{Binding EditStandartEnrolle}"/>
                     <MenuItem Header="Список абитуриентов" Command="{Binding ViewEnrollee}"/>
@@ -29,7 +29,7 @@
                 </MenuItem>
             </MenuItem>
             <Button Height="22" Width="24" HorizontalAlignment="Left" Command="{Binding ConnectToBDCom}">
-                <Image Height="20" Source="/pngSettings.png" Stretch="Fill" Width="20"/>
+                <Image Height="21" Source="/pngSettings.png" Stretch="Fill" Width="21"/>
             </Button>
         </Menu>
         <Frame Content="{Binding CurrentPage}" Grid.Row="1" NavigationUIVisibility="Hidden"/>

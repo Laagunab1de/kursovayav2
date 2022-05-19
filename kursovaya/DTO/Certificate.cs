@@ -12,7 +12,7 @@ namespace kursovaya.DTO
     {
         
         [Column("GPA")]
-        public float GPA { get; set; }
+        public string GPA { get; set; }
         [Column("Originality")]
         public bool Originality { get; set; }
         [Column("Enrollelist_idEnrollelist")]

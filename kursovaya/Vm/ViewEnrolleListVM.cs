@@ -26,7 +26,7 @@ namespace kursovaya.Vm
     {
         private Discipline selectedDiscipline;
         private List<Enrolle> enrolleBySelectedDiscipline;
-
+        private Certificate certificate;
         public List<Discipline> Disciplines { get; set; }
         public Discipline SelectedDiscipline
         {

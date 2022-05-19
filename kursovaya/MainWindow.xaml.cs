@@ -28,8 +28,8 @@ namespace kursovaya
         public MainWindow()
         {
             InitializeComponent();
-            //MySqlDB.GetInstance().Update(new Discipline { ID = 2, Title = "1141"});
-            DataContext = new MainVm();
+            
+            DataContext = new MainVm();            
         }
     }
 }

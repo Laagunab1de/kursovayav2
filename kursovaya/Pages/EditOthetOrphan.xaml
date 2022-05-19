@@ -7,7 +7,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="EditOthetOrphan">
-    <StackPanel>
+    <StackPanel >
         <StackPanel Margin="207,0,181,0" Grid.Column="1" DataContext="{Binding EditOtherOrphan}" Grid.ColumnSpan="2">
             <TextBlock Text="Информация о периоде пребывания в детском доме" Width="206" Height="36" TextWrapping="Wrap" HorizontalAlignment="Left"/>
         <TextBox Text="{Binding InformationAboutPeriodStayOrphanage}" Width="204" HorizontalAlignment="Left"/>
@@ -32,10 +32,10 @@
         <TextBlock Text="Копия документа о законном представителе" TextWrapping="Wrap" Width="195"  HorizontalAlignment="Left" Height="36"/>
         <TextBox Text="{Binding CopyDocumentLegalRepresentative}" Width="197" HorizontalAlignment="Left"/>
         </StackPanel>
-        <Label Content="Cтудент"/>
-        <ComboBox ItemsSource="{Binding Enrolles}"
+        <Label Content="Cтудент" Width="195"/>
+        <ComboBox Width="195" ItemsSource="{Binding Enrolles}"
                   SelectedItem="{Binding EnrolleOtherOrphan}"
                   DisplayMemberPath="ID"/>
-        <Button Content="Сохранить" Command="{Binding SaveEnrolle}"/>
+        <Button Width="195" Content="Сохранить" Command="{Binding SaveEnrolle}"/>
     </StackPanel>
 </Page>

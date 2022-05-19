@@ -23,7 +23,7 @@
                     <GridViewColumn Header="Фамилия" DisplayMemberBinding="{Binding Surname}"/>
                     <GridViewColumn Header="Имя" DisplayMemberBinding="{Binding FirstName}"/>
                     <GridViewColumn Header="Отчество" DisplayMemberBinding="{Binding Patronymic}"/>
-                    <GridViewColumn Header="Аттестат" DisplayMemberBinding="{Binding Discipline_idDiscipline}"/>
+                    <GridViewColumn Header="Аттестат" DisplayMemberBinding="{Binding Certificate.GPA}"/>
                     <GridViewColumn Header="Льготы" DisplayMemberBinding="{Binding AvailabilityOfBenefits}"/>
                     <GridViewColumn Header="Общежитие" DisplayMemberBinding="{Binding NeedHostel}"/>
                     <GridViewColumn Header="дата подачи заявления" DisplayMemberBinding="{Binding DateOfAdmission}"/>

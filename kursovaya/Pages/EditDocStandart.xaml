@@ -19,10 +19,10 @@
         <TextBox Text="{Binding MedicalPolicy}" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left"/>
         
     </StackPanel>
-        <Label Content="Cтудент"/>
-        <ComboBox ItemsSource="{Binding Enrolles}"
+        <Label MaxWidth="150" Content="Cтудент"/>
+        <ComboBox MaxWidth="150" ItemsSource="{Binding Enrolles}"
                   SelectedItem="{Binding EnrolleDocStandart}"
                   DisplayMemberPath="ID"/>
-        <Button Content="Сохранить" Command="{Binding SaveEnrolle}"/>
+        <Button MaxWidth="150" Content="Сохранить" Command="{Binding SaveEnrolle}"/>
     </StackPanel>
 </Page>
